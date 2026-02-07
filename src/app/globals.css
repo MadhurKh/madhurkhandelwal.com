@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Optional: base page background + font smoothing */
+
 :root {
   color-scheme: light;
 }
@@ -12,5 +12,5 @@ body {
 }
 
 body {
-  margin: 0;
+  @apply bg-white text-slate-900 antialiased;
 }
