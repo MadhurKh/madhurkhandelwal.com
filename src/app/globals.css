@@ -1,5 +1,6 @@
-@import "tailwindcss";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Optional: base page background + font smoothing */
 :root {
   color-scheme: light;
