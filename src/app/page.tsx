@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowRight,
   Github,
@@ -8,7 +9,7 @@ import {
   Sparkles,
   ShieldCheck,
   Layers,
-  LineChart,
+  Workflow,
 } from "lucide-react";
 
 const projects = [
@@ -21,95 +22,119 @@ const projects = [
       repo: "https://github.com/MadhurKh/GenAI-Contract-Risk-Analyzer",
       demo: "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
     },
+    highlight: "Explainable scoring + auditability",
   },
 ];
 
-const writing = [
-  {
-    title: "Agentic AI isn’t a tech upgrade. It’s an operating model upgrade.",
-    desc: "Guardrails, controls, auditability, and RACI matter as much as prompts.",
-    href: "https://www.linkedin.com/in/madhur17/",
-  },
-  {
-    title: "Productionizing GenAI: evaluation harness + calibration + CI",
-    desc: "How to iterate safely with DS/ML while keeping interfaces stable.",
-    href: "https://www.linkedin.com/in/madhur17/",
-  },
-];
+function cx(...classes: Array<string | false | undefined>) {
+  return classes.filter(Boolean).join(" ");
+}
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-slate-200/80 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
+    <span className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
       {children}
     </span>
   );
 }
 
-function Card({ children }: { children: React.ReactNode }) {
+function Card({
+  className = "",
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { className?: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-sm">
+    <div
+      className={`rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm backdrop-blur ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );
 }
 
-function PrimaryButton({
-  href,
-  children,
-  icon,
+
+function SectionTitle({
+  eyebrow,
+  title,
+  subtitle,
+  right,
 }: {
-  href: string;
-  children: React.ReactNode;
-  icon?: React.ReactNode;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  right?: React.ReactNode;
 }) {
   return (
-    <a
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
-    >
-      {children} {icon}
-    </a>
+    <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+      <div>
+        {eyebrow ? (
+          <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            {eyebrow}
+          </div>
+        ) : null}
+        <h2 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
+          {title}
+        </h2>
+        {subtitle ? (
+          <p className="mt-1 text-sm text-slate-600">{subtitle}</p>
+        ) : null}
+      </div>
+      {right ? <div className="mt-2 md:mt-0">{right}</div> : null}
+    </div>
   );
 }
 
-function SecondaryButton({
-  href,
-  children,
+function IconStat({
   icon,
-  external = true,
+  label,
+  value,
 }: {
-  href: string;
-  children: React.ReactNode;
-  icon?: React.ReactNode;
-  external?: boolean;
+  icon: React.ReactNode;
+  label: string;
+  value: string;
 }) {
   return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-    >
-      {icon} {children}
-    </a>
+    <div className="flex items-start gap-3 rounded-xl border border-slate-200/70 bg-white/70 p-4">
+      <div className="mt-0.5 rounded-lg border border-slate-200 bg-white p-2 text-slate-900">
+        {icon}
+      </div>
+      <div>
+        <div className="text-xs font-semibold text-slate-500">{label}</div>
+        <div className="mt-0.5 text-sm font-semibold text-slate-900">
+          {value}
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Background */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute -top-24 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-200/35 via-emerald-200/25 to-indigo-200/25 blur-3xl" />
-        <div className="absolute bottom-[-220px] left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-r from-slate-200/30 via-blue-200/20 to-emerald-200/20 blur-3xl" />
-      </div>
-
-      {/* Top bar */}
-      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#" className="text-sm font-semibold text-slate-900">
-            Madhur Khandelwal
-          </a>
+    <main className="min-h-screen bg-[radial-gradient(1200px_600px_at_20%_0%,rgba(59,130,246,0.14),transparent_55%),radial-gradient(900px_500px_at_85%_10%,rgba(16,185,129,0.12),transparent_55%),linear-gradient(to_bottom,#ffffff,#f8fafc)]">
+      {/* Mobile/Top nav */}
+      <header className="sticky top-0 z-40 border-b border-slate-200/60 bg-white/70 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              <Image
+                src="/madhur.jpg" // <-- change if needed
+                alt="Madhur Khandelwal"
+                width={72}
+                height={72}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+            <div className="leading-tight">
+              <div className="text-sm font-semibold text-slate-900">
+                Madhur Khandelwal
+              </div>
+              <div className="text-xs text-slate-600">
+                AVP • GenAI • Transformation
+              </div>
+            </div>
+          </div>
 
           <nav className="hidden gap-6 text-sm text-slate-700 md:flex">
             <a href="#projects" className="hover:text-slate-900">
@@ -126,273 +151,343 @@ export default function Home() {
             </a>
           </nav>
 
-          <div className="hidden md:block">
-            <SecondaryButton
-              href="https://www.linkedin.com/in/madhur17/"
-              icon={<Linkedin className="h-4 w-4" />}
-            >
-              LinkedIn
-            </SecondaryButton>
-          </div>
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 md:hidden"
+          >
+            View <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-5 pb-10 pt-10">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              GenAI • Agentic AI • Transformation • Product/Platform
-            </div>
-
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl">
-              Enterprise-grade GenAI that ships — with governance, DS/ML alignment, and measurable impact.
-            </h1>
-
-            <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-700 sm:text-lg">
-              I’m an AVP at Genpact leading Lean Digital Transformation and AI initiatives across GenAI,
-              process intelligence, and automation. This portfolio highlights practical demos and the
-              production patterns behind them (schemas, scoring logic, tests, evaluation hooks, auditability).
-            </p>
-
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <PrimaryButton href="#projects" icon={<ArrowRight className="h-4 w-4" />}>
-                View Projects
-              </PrimaryButton>
-
-              <SecondaryButton
-                href="https://github.com/MadhurKh"
-                icon={<Github className="h-4 w-4" />}
-              >
-                GitHub
-              </SecondaryButton>
-
-              <SecondaryButton
-                href="mailto:YOUR_EMAIL_HERE"
-                icon={<Mail className="h-4 w-4" />}
-                external={false}
-              >
-                Email
-              </SecondaryButton>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              <Pill>Governance-first delivery</Pill>
-              <Pill>DS↔Eng “handshakes”</Pill>
-              <Pill>Evaluation + monitoring</Pill>
-              <Pill>Reusable playbooks</Pill>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5">
-            <Card>
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-slate-900">What I optimize for</div>
-                <Sparkles className="h-4 w-4 text-slate-500" />
-              </div>
-
-              <div className="mt-4 grid gap-3">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <ShieldCheck className="h-4 w-4" /> Governance + auditability
-                  </div>
-                  <div className="mt-1 text-sm text-slate-900">
-                    Controls, logs, evidence trails, and safe human-in-loop patterns.
-                  </div>
+      {/* Layout */}
+      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-8 lg:grid-cols-12">
+        {/* Left premium rail (desktop) */}
+        <aside className="hidden lg:col-span-4 lg:block">
+          <div className="sticky top-24 space-y-4">
+            <Card className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="h-16 w-16 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <Image
+                    src="/madhur.jpg" // <-- change if needed
+                    alt="Madhur Khandelwal"
+                    width={128}
+                    height={128}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
                 </div>
-
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <Layers className="h-4 w-4" /> DS/ML ↔ Engineering alignment
+                <div>
+                  <div className="text-base font-semibold text-slate-900">
+                    Madhur Khandelwal
                   </div>
-                  <div className="mt-1 text-sm text-slate-900">
-                    Stable interfaces (schemas), test harnesses, and versioned outputs.
+                  <div className="mt-0.5 text-sm text-slate-600">
+                    AVP • Agentic AI & Transformation
                   </div>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <LineChart className="h-4 w-4" /> Measurable business impact
-                  </div>
-                  <div className="mt-1 text-sm text-slate-900">
-                    Outcomes tracked like products: KPIs, adoption, and value realization.
+                  <div className="mt-1 text-xs text-slate-500">
+                    Bengaluru, India
                   </div>
                 </div>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                <Pill>GenAI governance</Pill>
-                <Pill>Scoring explainability</Pill>
-                <Pill>Evaluation harness</Pill>
-                <Pill>Portfolio demos</Pill>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="mx-auto max-w-6xl px-5 py-10">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900">Projects</h2>
-            <p className="mt-1 text-sm text-slate-600">
-              Practical demos with enterprise-style outputs — not just slides.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {projects.map((p) => (
-            <Card key={p.title}>
-              <h3 className="text-base font-semibold text-slate-900">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{p.blurb}</p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <Pill key={t}>{t}</Pill>
-                ))}
+                <Pill>Governance-first</Pill>
+                <Pill>DS↔Eng handshakes</Pill>
+                <Pill>Enterprise delivery</Pill>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-5 grid gap-3">
+                <IconStat
+                  icon={<Sparkles className="h-4 w-4" />}
+                  label="Delivery impact"
+                  value="$150M+ identified value"
+                />
+                <IconStat
+                  icon={<Workflow className="h-4 w-4" />}
+                  label="Team leadership"
+                  value="50+ cross-functional team"
+                />
+                <IconStat
+                  icon={<ShieldCheck className="h-4 w-4" />}
+                  label="Core strength"
+                  value="Auditability + measurable outcomes"
+                />
+              </div>
+
+              <div className="mt-5 grid gap-3">
                 <a
-                  href={p.links.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-500"
-                >
-                  <PlayCircle className="h-4 w-4" /> Watch Demo
-                </a>
-                <a
-                  href={p.links.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  <Github className="h-4 w-4" /> Repo
-                </a>
-              </div>
-            </Card>
-          ))}
-
-          <Card>
-            <div className="text-sm font-semibold text-slate-900">Coming next</div>
-            <div className="mt-2 text-base font-semibold text-slate-900">
-              Agentic AI — Procurement Copilot
-            </div>
-            <p className="mt-2 text-sm text-slate-700">
-              Multi-agent workflow for sourcing, contract review, PO compliance, and vendor comms — with
-              human-in-the-loop approvals and governance.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Pill>Agents + orchestration</Pill>
-              <Pill>Policy/guardrails</Pill>
-              <Pill>Evaluation + monitoring</Pill>
-              <Pill>Ops integration</Pill>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Writing */}
-      <section id="writing" className="mx-auto max-w-6xl px-5 py-10">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900">Writing</h2>
-            <p className="mt-1 text-sm text-slate-600">
-              Leadership-friendly insights on operating model, governance, and production patterns.
-            </p>
-          </div>
-
-          <SecondaryButton
-            href="https://www.linkedin.com/in/madhur17/"
-            icon={<FileText className="h-4 w-4" />}
-          >
-            View on LinkedIn
-          </SecondaryButton>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {writing.map((w) => (
-            <a key={w.title} href={w.href} target="_blank" rel="noreferrer">
-              <Card>
-                <div className="text-sm font-semibold text-slate-900">{w.title}</div>
-                <div className="mt-1 text-sm text-slate-700">{w.desc}</div>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
-                  Read <ArrowRight className="h-4 w-4" />
-                </div>
-              </Card>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* About + Contact */}
-      <section id="about" className="mx-auto max-w-6xl px-5 py-10">
-        <div className="grid gap-4 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Card>
-              <h2 className="text-2xl font-semibold text-slate-900">About</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                I lead cross-functional teams spanning product, engineering, and transformation delivery.
-                My focus is building scalable solutions with measurable outcomes — combining GenAI with
-                strong governance and “design for change” (schemas, tests, documentation, and auditability).
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <SecondaryButton
                   href="https://www.linkedin.com/in/madhur17/"
-                  icon={<Linkedin className="h-4 w-4" />}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
                 >
-                  LinkedIn
-                </SecondaryButton>
-                <SecondaryButton
+                  <Linkedin className="h-4 w-4" /> LinkedIn
+                </a>
+                <a
                   href="https://github.com/MadhurKh"
-                  icon={<Github className="h-4 w-4" />}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
                 >
-                  GitHub
-                </SecondaryButton>
-              </div>
-            </Card>
-          </div>
-
-          <div id="contact" className="lg:col-span-5">
-            <Card>
-              <h2 className="text-2xl font-semibold text-slate-900">Contact</h2>
-              <p className="mt-2 text-sm text-slate-700">
-                For roles, collaborations, or a walkthrough of projects:
-              </p>
-
-              <div className="mt-5 flex flex-col gap-3">
+                  <Github className="h-4 w-4" /> GitHub
+                </a>
                 <a
                   href="mailto:YOUR_EMAIL_HERE"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
                 >
-                  <Mail className="h-4 w-4" /> Email me
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/madhur17/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  <Linkedin className="h-4 w-4" /> Message on LinkedIn
+                  <Mail className="h-4 w-4" /> Email
                 </a>
               </div>
 
-              <p className="mt-4 text-xs text-slate-500">
-                Tip: Replace <span className="font-mono">YOUR_EMAIL_HERE</span> with your preferred contact email.
-              </p>
+              <div className="mt-5 rounded-xl border border-slate-200/70 bg-white/60 p-4">
+                <div className="text-xs font-semibold text-slate-600">
+                  Positioning statement
+                </div>
+                <div className="mt-1 text-sm text-slate-900">
+                  I build enterprise-ready AI products that ship — with governance,
+                  evaluation, and adoption built in.
+                </div>
+              </div>
             </Card>
           </div>
-        </div>
-      </section>
+        </aside>
 
-      {/* Footer */}
-      <footer className="mx-auto max-w-6xl px-5 pb-10 pt-6 text-xs text-slate-500">
-        © {new Date().getFullYear()} Madhur Khandelwal • Built with Next.js + Tailwind
-      </footer>
+        {/* Right content */}
+        <section className="lg:col-span-8">
+          {/* Hero */}
+          <Card className="p-6 md:p-8">
+            <div className="flex flex-wrap gap-2">
+              <Pill>GenAI • Agentic AI</Pill>
+              <Pill>Transformation</Pill>
+              <Pill>Product/Platform</Pill>
+              <Pill>Process Intelligence</Pill>
+            </div>
+
+            <h1 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+              Building enterprise-grade GenAI solutions with strong governance,
+              DS/ML collaboration, and measurable business impact.
+            </h1>
+
+            <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-700">
+              I’m an AVP at Genpact leading Lean Digital Transformation and AI initiatives across
+              GenAI, process intelligence, and automation. This portfolio showcases practical demos,
+              artifacts, and how I structure DS↔Engineering “handshakes” (schemas, scoring logic,
+              tests, evaluation hooks).
+            </p>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
+              >
+                Explore projects <ArrowRight className="h-4 w-4" />
+              </a>
+
+              <a
+                href="https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
+              >
+                <PlayCircle className="h-4 w-4" /> Watch featured demo
+              </a>
+            </div>
+
+            <div className="mt-7 grid gap-3 md:grid-cols-3">
+              <IconStat
+                icon={<ShieldCheck className="h-4 w-4" />}
+                label="Governance-ready"
+                value="Controls, audit logs, evidence"
+              />
+              <IconStat
+                icon={<Layers className="h-4 w-4" />}
+                label="Interface contracts"
+                value="DS↔Eng schemas + versioning"
+              />
+              <IconStat
+                icon={<Workflow className="h-4 w-4" />}
+                label="Delivery operating model"
+                value="KPI tracking + adoption"
+              />
+            </div>
+          </Card>
+
+          {/* Projects */}
+          <div id="projects" className="mt-6 scroll-mt-24">
+            <Card className="p-6 md:p-8">
+              <SectionTitle
+                eyebrow="Featured work"
+                title="Projects"
+                subtitle="Practical demos with enterprise-style outputs — not just slides."
+              />
+
+              <div className="mt-6 grid gap-4">
+                {projects.map((p) => (
+                  <div
+                    key={p.title}
+                    className="rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
+                  >
+                    <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                      <div>
+                        <h3 className="text-lg font-semibold text-slate-900">
+                          {p.title}
+                        </h3>
+                        <p className="mt-1 text-sm text-slate-600">
+                          {p.highlight}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {p.tags.slice(0, 3).map((t) => (
+                          <Pill key={t}>{t}</Pill>
+                        ))}
+                      </div>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-relaxed text-slate-700">
+                      {p.blurb}
+                    </p>
+
+                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                      <a
+                        href={p.links.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
+                      >
+                        <PlayCircle className="h-4 w-4" /> Watch demo
+                      </a>
+
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
+                      >
+                        <Github className="h-4 w-4" /> View repo
+                      </a>
+                    </div>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <Pill key={t}>{t}</Pill>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          {/* Writing */}
+          <div id="writing" className="mt-6 scroll-mt-24">
+            <Card className="p-6 md:p-8">
+              <SectionTitle
+                eyebrow="Thought leadership"
+                title="Writing"
+                subtitle="Short, leadership-friendly insights on operating model, governance, and transformation."
+                right={
+                  <a
+                    href="https://www.linkedin.com/in/madhur17/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-white"
+                  >
+                    <FileText className="h-4 w-4" /> View on LinkedIn
+                  </a>
+                }
+              />
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {[
+                  {
+                    title:
+                      "Agentic AI isn’t a tech upgrade. It’s an operating model upgrade.",
+                    blurb:
+                      "Guardrails, controls, auditability, and RACI matter as much as prompts.",
+                  },
+                  {
+                    title:
+                      "Productionizing GenAI: evaluation harness + calibration + CI",
+                    blurb:
+                      "How to iterate safely with DS/ML while keeping interfaces stable.",
+                  },
+                ].map((w) => (
+                  <div
+                    key={w.title}
+                    className="rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
+                  >
+                    <div className="text-sm font-semibold text-slate-900">
+                      {w.title}
+                    </div>
+                    <div className="mt-2 text-sm text-slate-700">{w.blurb}</div>
+                    <div className="mt-4 text-xs font-semibold text-slate-500">
+                      Coming soon: full post link
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          {/* About + Contact */}
+          <div id="about" className="mt-6 scroll-mt-24">
+            <div className="grid gap-4 lg:grid-cols-12">
+              <Card className="p-6 md:p-8 lg:col-span-7">
+                <SectionTitle
+                  eyebrow="Background"
+                  title="About"
+                  subtitle="How I work across product, engineering, and transformation delivery."
+                />
+                <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                  I lead cross-functional teams spanning product, engineering, and transformation delivery.
+                  My focus is building scalable solutions with measurable outcomes — combining GenAI with
+                  strong governance and “design for change” (schemas, tests, documentation, and auditability).
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Pill>Operating model</Pill>
+                  <Pill>Adoption + controls</Pill>
+                  <Pill>Value realization</Pill>
+                </div>
+              </Card>
+
+              <Card id="contact" className="p-6 md:p-8 lg:col-span-5">
+                <SectionTitle
+                  eyebrow="Let’s talk"
+                  title="Contact"
+                  subtitle="For roles, collaborations, or a walkthrough of projects."
+                />
+
+                <div className="mt-5 flex flex-col gap-3">
+                  <a
+                    href="mailto:Gpmadhur@gmail.com"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+                  >
+                    <Mail className="h-4 w-4" /> Email me
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/madhur17/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
+                  >
+                    <Linkedin className="h-4 w-4" /> Message on LinkedIn
+                  </a>
+                </div>
+
+                
+              </Card>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <footer className="mt-8 px-1 pb-10 text-xs text-slate-500">
+            © {new Date().getFullYear()} Madhur Khandelwal • Built with Next.js + Tailwind
+          </footer>
+        </section>
+      </div>
     </main>
   );
 }
