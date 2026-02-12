@@ -1,3 +1,5 @@
+// src/app/page.tsx
+
 import { site } from "@/content/site";
 import Image from "next/image";
 import {
@@ -39,10 +41,7 @@ function Card({
   className = "",
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
-  className?: string;
-  children: React.ReactNode;
-}) {
+}: React.HTMLAttributes<HTMLDivElement> & { className?: string; children: React.ReactNode }) {
   return (
     <div
       className={`rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm backdrop-blur ${className}`}
@@ -123,16 +122,16 @@ export default function Home() {
             </div>
             <div className="leading-tight">
               <div className="text-sm font-semibold text-slate-900">{site.person.name}</div>
-              <div className="text-xs text-slate-600">{site.nav.subtitle}</div>
+              <div className="text-xs text-slate-600">AI Product • GenAI • Transformation</div>
             </div>
           </div>
 
           <nav className="hidden gap-6 text-sm text-slate-700 md:flex">
-            <a href="#featured" className="hover:text-slate-900">Featured</a>
-            <a href="#projects" className="hover:text-slate-900">Projects</a>
-            <a href="#writing" className="hover:text-slate-900">Writing</a>
-            <a href="#about" className="hover:text-slate-900">About</a>
-            <a href="#contact" className="hover:text-slate-900">Contact</a>
+            {site.nav.map((n) => (
+              <a key={n.href} href={n.href} className="hover:text-slate-900">
+                {n.label}
+              </a>
+            ))}
           </nav>
 
           <a
@@ -150,11 +149,10 @@ export default function Home() {
         <aside className="hidden lg:col-span-4 lg:block">
           <div className="sticky top-24 space-y-4">
             <Card className="p-6">
-              {/* Stacked: image -> name -> pills */}
-              <div className="flex flex-col items-start gap-4">
+              <div className="flex items-start gap-4">
                 <div className="relative">
-                  <div className="absolute -inset-1 rounded-[32px] bg-gradient-to-br from-slate-200 via-white to-slate-200 opacity-80 blur-sm" />
-                  <div className="relative h-40 w-40 overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm">
+                  <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-br from-slate-200 via-white to-slate-200 opacity-80 blur-sm" />
+                  <div className="relative h-32 w-32 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
                     <Image
                       src={site.person.image}
                       alt={site.person.name}
@@ -166,22 +164,37 @@ export default function Home() {
                 </div>
 
                 <div className="min-w-0">
-                  <div className="text-lg font-semibold text-slate-900">{site.person.name}</div>
+                  <div className="text-base font-semibold text-slate-900">
+                    {site.person.name}
+                  </div>
                   <div className="mt-0.5 text-sm text-slate-600">{site.person.title}</div>
                   <div className="mt-1 text-xs text-slate-500">{site.person.location}</div>
-                </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {site.leftRail.pills.map((p) => (
-                    <Pill key={p}>{p}</Pill>
-                  ))}
+                  {/* pills UNDER the photo+name block */}
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {site.leftRail.pills.map((p) => (
+                      <Pill key={p}>{p}</Pill>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               <div className="mt-6 grid gap-3">
-                <IconStat icon={<Sparkles className="h-4 w-4" />} label={site.leftRail.stats[0].label} value={site.leftRail.stats[0].value} />
-                <IconStat icon={<Workflow className="h-4 w-4" />} label={site.leftRail.stats[1].label} value={site.leftRail.stats[1].value} />
-                <IconStat icon={<ShieldCheck className="h-4 w-4" />} label={site.leftRail.stats[2].label} value={site.leftRail.stats[2].value} />
+                <IconStat
+                  icon={<Sparkles className="h-4 w-4" />}
+                  label={site.leftRail.stats[0].label}
+                  value={site.leftRail.stats[0].value}
+                />
+                <IconStat
+                  icon={<Workflow className="h-4 w-4" />}
+                  label={site.leftRail.stats[1].label}
+                  value={site.leftRail.stats[1].value}
+                />
+                <IconStat
+                  icon={<ShieldCheck className="h-4 w-4" />}
+                  label={site.leftRail.stats[2].label}
+                  value={site.leftRail.stats[2].value}
+                />
               </div>
 
               <div className="mt-6 grid gap-3">
@@ -212,8 +225,12 @@ export default function Home() {
               </div>
 
               <div className="mt-6 rounded-xl border border-slate-200/70 bg-white/60 p-4">
-                <div className="text-xs font-semibold text-slate-600">{site.leftRail.positioningLabel}</div>
-                <div className="mt-1 text-sm text-slate-900">{site.leftRail.positioningText}</div>
+                <div className="text-xs font-semibold text-slate-600">
+                  {site.leftRail.positioningLabel}
+                </div>
+                <div className="mt-1 text-sm text-slate-900">
+                  {site.leftRail.positioningText}
+                </div>
               </div>
             </Card>
           </div>
@@ -229,50 +246,54 @@ export default function Home() {
               ))}
             </div>
 
-            {/* smaller headline */}
-            <h1 className="mt-4 text-balance text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+            {/* Reduced header size slightly */}
+            <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               {site.hero.headline}
             </h1>
 
             <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-700">
-              {site.hero.subheadline}
+              {site.hero.body}
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href="#projects"
+                href={site.hero.primaryCta.href}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
               >
-                Explore projects <ArrowRight className="h-4 w-4" />
+                {site.hero.primaryCta.label} <ArrowRight className="h-4 w-4" />
               </a>
 
               <a
-                href={site.hero.primaryDemoHref}
+                href={site.hero.secondaryCta.href}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
               >
-                <PlayCircle className="h-4 w-4" /> Watch featured demo
+                <PlayCircle className="h-4 w-4" /> {site.hero.secondaryCta.label}
               </a>
             </div>
 
             <div className="mt-7 grid gap-3 md:grid-cols-3">
-              {site.hero.stats.map((s) => {
-                const icon =
-                  s.icon === "layers" ? (
-                    <Layers className="h-4 w-4" />
-                  ) : s.icon === "workflow" ? (
-                    <Workflow className="h-4 w-4" />
-                  ) : (
-                    <ShieldCheck className="h-4 w-4" />
-                  );
-                return <IconStat key={s.label} icon={icon} label={s.label} value={s.value} />;
-              })}
+              <IconStat
+                icon={<ShieldCheck className="h-4 w-4" />}
+                label={site.hero.highlights[0].label}
+                value={site.hero.highlights[0].value}
+              />
+              <IconStat
+                icon={<Layers className="h-4 w-4" />}
+                label={site.hero.highlights[1].label}
+                value={site.hero.highlights[1].value}
+              />
+              <IconStat
+                icon={<Workflow className="h-4 w-4" />}
+                label={site.hero.highlights[2].label}
+                value={site.hero.highlights[2].value}
+              />
             </div>
           </Card>
 
-          {/* Featured */}
-          <div id="featured" className="mt-6 scroll-mt-24">
+          {/* Featured (Genpact) */}
+          <div className="mt-6">
             <Card className="p-6 md:p-8">
               <SectionTitle
                 eyebrow={site.sections.featured.eyebrow}
@@ -373,18 +394,56 @@ export default function Home() {
               />
 
               <div className="mt-6 grid gap-4 md:grid-cols-2">
-                {site.sections.writing.cards.map((w) => (
+                {site.sections.writing.posts.map((w) => (
                   <div
                     key={w.title}
                     className="rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
                   >
                     <div className="text-sm font-semibold text-slate-900">{w.title}</div>
                     <div className="mt-2 text-sm text-slate-700">{w.blurb}</div>
-                    <div className="mt-4 text-xs font-semibold text-slate-500">
-                      Coming soon: full post link
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {w.tags.map((t) => (
+                        <Pill key={t}>{t}</Pill>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                      {w.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
+                        >
+                          <ArrowRight className="h-4 w-4" /> {l.label}
+                        </a>
+                      ))}
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Archive */}
+              <div className="mt-8">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  {site.sections.writing.archiveTitle}
+                </div>
+                <div className="mt-3 grid gap-3">
+                  {site.sections.writing.archive.map((a) => (
+                    <a
+                      key={a.href}
+                      href={a.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-2xl border border-slate-200/70 bg-white/70 p-4 text-sm text-slate-700 shadow-sm hover:bg-white"
+                    >
+                      <div className="font-semibold text-slate-900">{a.title}</div>
+                      <div className="mt-1 text-sm text-slate-600">{a.blurb}</div>
+                    </a>
+                  ))}
+                </div>
               </div>
             </Card>
           </div>
@@ -398,7 +457,9 @@ export default function Home() {
                   title={site.sections.about.title}
                   subtitle={site.sections.about.subtitle}
                 />
-                <p className="mt-4 text-sm leading-relaxed text-slate-700">{site.sections.about.body}</p>
+                <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                  {site.sections.about.body}
+                </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   {site.sections.about.pills.map((p) => (
@@ -437,7 +498,7 @@ export default function Home() {
 
           {/* Footer */}
           <footer className="mt-8 px-1 pb-10 text-xs text-slate-500">
-            © {new Date().getFullYear()} {site.person.name} • Built with Next.js + Tailwind
+            © {new Date().getFullYear()} {site.person.name} • {site.footer.text}
           </footer>
         </section>
       </div>
