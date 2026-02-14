@@ -41,7 +41,10 @@ function Card({
   className = "",
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { className?: string; children: React.ReactNode }) {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div
       className={`rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm backdrop-blur ${className}`}
@@ -74,7 +77,9 @@ function SectionTitle({
         <h2 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
           {title}
         </h2>
-        {subtitle ? <p className="mt-1 text-sm text-slate-600">{subtitle}</p> : null}
+        {subtitle ? (
+          <p className="mt-1 text-sm text-slate-600">{subtitle}</p>
+        ) : null}
       </div>
       {right ? <div className="mt-2 md:mt-0">{right}</div> : null}
     </div>
@@ -121,8 +126,12 @@ export default function Home() {
               />
             </div>
             <div className="leading-tight">
-              <div className="text-sm font-semibold text-slate-900">{site.person.name}</div>
-              <div className="text-xs text-slate-600">AI Product • GenAI • Transformation</div>
+              <div className="text-sm font-semibold text-slate-900">
+                {site.person.name}
+              </div>
+              <div className="text-xs text-slate-600">
+                AI Product • GenAI • Transformation
+              </div>
             </div>
           </div>
 
@@ -149,6 +158,7 @@ export default function Home() {
         <aside className="hidden lg:col-span-4 lg:block">
           <div className="sticky top-24 space-y-4">
             <Card className="p-6">
+              {/* Row 1: photo + text */}
               <div className="flex items-start gap-4">
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-br from-slate-200 via-white to-slate-200 opacity-80 blur-sm" />
@@ -167,16 +177,20 @@ export default function Home() {
                   <div className="text-base font-semibold text-slate-900">
                     {site.person.name}
                   </div>
-                  <div className="mt-0.5 text-sm text-slate-600">{site.person.title}</div>
-                  <div className="mt-1 text-xs text-slate-500">{site.person.location}</div>
-
-                  {/* pills UNDER the photo+name block */}
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {site.leftRail.pills.map((p) => (
-                      <Pill key={p}>{p}</Pill>
-                    ))}
+                  <div className="mt-0.5 text-sm text-slate-600">
+                    {site.person.title}
+                  </div>
+                  <div className="mt-1 text-xs text-slate-500">
+                    {site.person.location}
                   </div>
                 </div>
+              </div>
+
+              {/* Row 2: pills full width BELOW */}
+              <div className="mt-3 flex flex-wrap gap-2">
+                {site.leftRail.pills.map((p) => (
+                  <Pill key={p}>{p}</Pill>
+                ))}
               </div>
 
               <div className="mt-6 grid gap-3">
