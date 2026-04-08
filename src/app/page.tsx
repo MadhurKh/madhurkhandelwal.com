@@ -13,6 +13,12 @@ import {
   ShieldCheck,
   Layers,
   Workflow,
+  Map,
+  GitBranch,
+  AlertTriangle,
+  ClipboardCheck,
+  Users,
+  Gauge,
 } from "lucide-react";
 
 const projects = [
@@ -130,7 +136,7 @@ export default function Home() {
                 {site.person.name}
               </div>
               <div className="text-xs text-slate-600">
-                AI Product • GenAI • Transformation
+                Senior Technical Program Management • Platform Delivery • Roadmap & Release
               </div>
             </div>
           </div>
@@ -177,12 +183,8 @@ export default function Home() {
                   <div className="text-base font-semibold text-slate-900">
                     {site.person.name}
                   </div>
-                  <div className="mt-0.5 text-sm text-slate-600">
-                    {site.person.title}
-                  </div>
-                  <div className="mt-1 text-xs text-slate-500">
-                    {site.person.location}
-                  </div>
+                  <div className="mt-0.5 text-sm text-slate-600">{site.person.title}</div>
+                  <div className="mt-1 text-xs text-slate-500">{site.person.location}</div>
                 </div>
               </div>
 
@@ -242,9 +244,7 @@ export default function Home() {
                 <div className="text-xs font-semibold text-slate-600">
                   {site.leftRail.positioningLabel}
                 </div>
-                <div className="mt-1 text-sm text-slate-900">
-                  {site.leftRail.positioningText}
-                </div>
+                <div className="mt-1 text-sm text-slate-900">{site.leftRail.positioningText}</div>
               </div>
             </Card>
           </div>
@@ -260,7 +260,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Reduced header size slightly */}
             <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               {site.hero.headline}
             </h1>
@@ -305,6 +304,46 @@ export default function Home() {
               />
             </div>
           </Card>
+
+          {/* Program Delivery Playbook */}
+          <div id="playbook" className="mt-6 scroll-mt-24">
+            <Card className="p-6 md:p-8">
+              <SectionTitle
+                eyebrow={site.sections.playbook.eyebrow}
+                title={site.sections.playbook.title}
+                subtitle={site.sections.playbook.subtitle}
+              />
+
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                {site.sections.playbook.items.map((it) => (
+                  <div
+                    key={it.title}
+                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
+                  >
+                    <div className="mt-0.5 rounded-lg border border-slate-200 bg-white p-2 text-slate-900">
+                      {it.icon === "roadmap" ? (
+                        <Map className="h-4 w-4" />
+                      ) : it.icon === "deps" ? (
+                        <GitBranch className="h-4 w-4" />
+                      ) : it.icon === "raid" ? (
+                        <AlertTriangle className="h-4 w-4" />
+                      ) : it.icon === "release" ? (
+                        <ClipboardCheck className="h-4 w-4" />
+                      ) : it.icon === "stakeholders" ? (
+                        <Users className="h-4 w-4" />
+                      ) : (
+                        <Gauge className="h-4 w-4" />
+                      )}
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-slate-900">{it.title}</div>
+                      <div className="mt-1 text-sm text-slate-700">{it.blurb}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
 
           {/* Featured (Genpact) */}
           <div className="mt-6">
