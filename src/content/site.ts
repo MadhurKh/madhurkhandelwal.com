@@ -131,22 +131,31 @@ export const site = {
       buttonHref: "https://www.linkedin.com/in/madhur17/",
       posts: [
         {
+          title:
+            "What Actually Makes Complex Product Launches Succeed: A Technical Program Management Perspective",
+          blurb:
+            "Complex launches rarely fail due to effort. They fail when dependencies surface too late, decision owners are unclear, and release readiness is managed late. This article shares a practical TPM view on roadmap sequencing, dependency control, launch gates, executive visibility, and post-launch outcomes.",
+          tags: ["Launch", "Dependencies", "Release readiness", "TPM"],
+          links: [
+            {
+              label: "Read on LinkedIn",
+              href: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+            },
+          ],
+        },
+        {
           title: "Running platform releases: readiness, RAID, and predictable delivery",
           blurb:
             "A practical playbook for release planning, risk management, and keeping cross-functional teams aligned.",
           tags: ["Release", "RAID", "Operating model"],
-          links: [
-            { label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" },
-          ],
+          links: [{ label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" }],
         },
         {
           title: "Governance that improves predictability (not bureaucracy)",
           blurb:
             "How to use stage gates, interface contracts, and lightweight controls to accelerate delivery outcomes.",
           tags: ["Governance", "Delivery", "Interfaces"],
-          links: [
-            { label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" },
-          ],
+          links: [{ label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" }],
         },
       ],
       archiveTitle: "Earlier writing",

@@ -23,15 +23,37 @@ import {
 
 const projects = [
   {
-    title: "GenAI Contract Risk Analyzer",
+    title: "Contract Risk Analyzer — TPM Program Case Study",
+    highlight: "Roadmap + dependency control + release readiness + measurable outcomes",
     blurb:
-      "Enterprise-style GenAI demo: risk register + evidence mapping + explainable scoring + audit log + JSON export. Designed with DS↔Engineering interface contracts.",
-    tags: ["GenAI", "Governance", "Schemas", "Testing", "Streamlit"],
+      "A TPM-style case study of delivering an enterprise-grade solution end-to-end. Scope: cross-functional build across Product/Eng/DS. Mechanisms: milestone plan, dependency sequencing, RAID + decision ownership, launch gates, and post-launch outcomes. Outputs: explainable scoring, audit trail, and exportable artifacts.",
+    tags: ["Roadmap", "Dependencies", "Release readiness", "Governance", "Interfaces", "Auditability"],
     links: {
       repo: "https://github.com/MadhurKh/GenAI-Contract-Risk-Analyzer",
       demo: "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
     },
-    highlight: "Explainable scoring + auditability",
+  },
+  {
+    title: "Release Readiness Checklist — Template",
+    highlight: "Launch gates + readiness reviews + cutover planning",
+    blurb:
+      "A practical template for release readiness: scope lock, dependency confirmations, quality gates, cutover/runbook checks, stakeholder comms, and launch approval criteria. Built to reduce last-minute surprises and improve predictability.",
+    tags: ["Release readiness", "Launch gates", "Cutover", "Quality", "Comms"],
+    links: {
+      repo: "https://github.com/MadhurKh",
+      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+    },
+  },
+  {
+    title: "RAID Log + Decision Tracker — Template",
+    highlight: "Risk/assumption tracking + decision ownership + executive visibility",
+    blurb:
+      "A lightweight operating mechanism to run complex programs: RAID log with owners and mitigations, decision tracker with DRIs, and cadence-friendly reporting for leadership visibility and fast unblock.",
+    tags: ["RAID", "Decisioning", "Operating model", "Risk", "Visibility"],
+    links: {
+      repo: "https://github.com/MadhurKh",
+      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+    },
   },
 ];
 
@@ -83,9 +105,7 @@ function SectionTitle({
         <h2 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
           {title}
         </h2>
-        {subtitle ? (
-          <p className="mt-1 text-sm text-slate-600">{subtitle}</p>
-        ) : null}
+        {subtitle ? <p className="mt-1 text-sm text-slate-600">{subtitle}</p> : null}
       </div>
       {right ? <div className="mt-2 md:mt-0">{right}</div> : null}
     </div>
@@ -132,9 +152,7 @@ export default function Home() {
               />
             </div>
             <div className="leading-tight">
-              <div className="text-sm font-semibold text-slate-900">
-                {site.person.name}
-              </div>
+              <div className="text-sm font-semibold text-slate-900">{site.person.name}</div>
               <div className="text-xs text-slate-600">
                 Senior Technical Program Management • Platform Delivery • Roadmap & Release
               </div>
@@ -180,9 +198,7 @@ export default function Home() {
                 </div>
 
                 <div className="min-w-0">
-                  <div className="text-base font-semibold text-slate-900">
-                    {site.person.name}
-                  </div>
+                  <div className="text-base font-semibold text-slate-900">{site.person.name}</div>
                   <div className="mt-0.5 text-sm text-slate-600">{site.person.title}</div>
                   <div className="mt-1 text-xs text-slate-500">{site.person.location}</div>
                 </div>
@@ -366,7 +382,7 @@ export default function Home() {
             </Card>
           </div>
 
-          {/* Projects */}
+          {/* Programs */}
           <div id="projects" className="mt-6 scroll-mt-24">
             <Card className="p-6 md:p-8">
               <SectionTitle
@@ -403,7 +419,7 @@ export default function Home() {
                         rel="noreferrer"
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
                       >
-                        <PlayCircle className="h-4 w-4" /> Watch demo
+                        <PlayCircle className="h-4 w-4" /> View artifact
                       </a>
 
                       <a
