@@ -9,6 +9,7 @@ export const site = {
     links: {
       linkedin: "https://www.linkedin.com/in/madhur17/",
       github: "https://github.com/MadhurKh",
+      templatesRepo: "https://github.com/MadhurKh/tpm-templates",
       email: "madhur.khandelwal@gmail.com",
     },
   },

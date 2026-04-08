@@ -32,6 +32,7 @@ const projects = [
       repo: "https://github.com/MadhurKh/GenAI-Contract-Risk-Analyzer",
       demo: "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
     },
+    demoLabel: "Watch demo",
   },
   {
     title: "Release Readiness Checklist — Template",
@@ -40,9 +41,10 @@ const projects = [
       "A practical template for release readiness: scope lock, dependency confirmations, quality gates, cutover/runbook checks, stakeholder comms, and launch approval criteria. Built to reduce last-minute surprises and improve predictability.",
     tags: ["Release readiness", "Launch gates", "Cutover", "Quality", "Comms"],
     links: {
-      repo: "https://github.com/MadhurKh",
-      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+      repo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://github.com/MadhurKh/tpm-templates",
     },
+    demoLabel: "Open templates repo",
   },
   {
     title: "RAID Log + Decision Tracker — Template",
@@ -51,9 +53,10 @@ const projects = [
       "A lightweight operating mechanism to run complex programs: RAID log with owners and mitigations, decision tracker with DRIs, and cadence-friendly reporting for leadership visibility and fast unblock.",
     tags: ["RAID", "Decisioning", "Operating model", "Risk", "Visibility"],
     links: {
-      repo: "https://github.com/MadhurKh",
-      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+      repo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://github.com/MadhurKh/tpm-templates",
     },
+    demoLabel: "Open templates repo",
   },
 ];
 
@@ -249,6 +252,15 @@ export default function Home() {
                 </a>
 
                 <a
+                  href={site.person.links.templatesRepo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
+                >
+                  <FileText className="h-4 w-4" /> TPM Templates
+                </a>
+
+                <a
                   href={`mailto:${site.person.links.email}`}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
                 >
@@ -389,6 +401,16 @@ export default function Home() {
                 eyebrow={site.sections.projects.eyebrow}
                 title={site.sections.projects.title}
                 subtitle={site.sections.projects.subtitle}
+                right={
+                  <a
+                    href={site.person.links.templatesRepo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-white"
+                  >
+                    <FileText className="h-4 w-4" /> Open TPM Templates
+                  </a>
+                }
               />
 
               <div className="mt-6 grid gap-4">
@@ -419,7 +441,7 @@ export default function Home() {
                         rel="noreferrer"
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
                       >
-                        <PlayCircle className="h-4 w-4" /> View artifact
+                        <PlayCircle className="h-4 w-4" /> {p.demoLabel}
                       </a>
 
                       <a
@@ -500,9 +522,9 @@ export default function Home() {
                   {site.sections.writing.archiveTitle}
                 </div>
                 <div className="mt-3 grid gap-3">
-                  {site.sections.writing.archive.map((a) => (
+                  {site.sections.writing.archive.map((a, i) => (
                     <a
-                      key={a.href}
+                      key={`${a.title}-${a.href}-${i}`}
                       href={a.href}
                       target="_blank"
                       rel="noreferrer"
