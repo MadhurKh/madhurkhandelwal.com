@@ -48,7 +48,7 @@ export const site = {
     headline:
       "Delivering complex platform programs end-to-end—roadmap, dependencies, release readiness, and measurable outcomes.",
     body:
-      "I lead cross-functional technical programs across the full product lifecycle—partnering with Engineering, Product, UX, Legal, Finance, Support, and GTM teams to plan dependencies, manage RAID, drive release readiness, and deliver outcomes tied to reliability, performance, customer experience, and operational efficiency.",
+      "I lead cross-functional technical programs across the full product lifecycle—partnering with Engineering, Product, UX, Legal, Finance, Support, and GTM teams to plan dependencies, manage RAID, drive release readiness, and deliver outcomes tied to reliability, performance, customer experience, and operational efficiency. Tooling + cadence: Jira, Confluence, Smartsheet; weekly exec updates; RAID + decision logs + readiness checklists.",
     primaryCta: { label: "Explore programs", href: "#projects" },
     secondaryCta: {
       label: "Watch featured demo",

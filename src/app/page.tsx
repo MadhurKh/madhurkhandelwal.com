@@ -35,6 +35,30 @@ const projects = [
     demoLabel: "Watch demo",
   },
   {
+    title: "API Platform Rollout — TPM Program Case Study",
+    highlight: "Versioning + integration readiness + phased rollout + adoption metrics",
+    blurb:
+      "A platform launch pattern for API/contract changes at scale. Scope: API versioning, partner/team integrations, backward compatibility, and migration sequencing. Mechanisms: dependency map, interface handshakes, rollout strategy (feature flags/phases), release readiness gates, and adoption tracking with clear owner/decision cadence.",
+    tags: ["API", "Integrations", "Rollout", "Dependencies", "Release readiness", "Adoption"],
+    links: {
+      repo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+    },
+    demoLabel: "Read approach",
+  },
+  {
+    title: "Reliability & Scale Program — TPM Case Study",
+    highlight: "SLOs + observability + release quality gates + incident reduction",
+    blurb:
+      "A reliability program pattern focused on making delivery safer and outcomes measurable. Scope: reliability goals (SLOs), monitoring/alerting, incident response improvements, and release quality gates. Mechanisms: weekly exec updates, RAID discipline, decision logging, and post-launch reviews tied to customer impact and operational metrics.",
+    tags: ["Reliability", "SLOs", "Observability", "Release quality", "Incidents", "Scale"],
+    links: {
+      repo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+    },
+    demoLabel: "Read approach",
+  },
+  {
     title: "Release Readiness Checklist — Template",
     highlight: "Launch gates + readiness reviews + cutover planning",
     blurb:
@@ -42,9 +66,9 @@ const projects = [
     tags: ["Release readiness", "Launch gates", "Cutover", "Quality", "Comms"],
     links: {
       repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://github.com/MadhurKh/tpm-templates/blob/main/templates/launch-release-readiness/01-launch-readiness-checklist.md",
     },
-    demoLabel: "Open templates repo",
+    demoLabel: "Open checklist",
   },
   {
     title: "RAID Log + Decision Tracker — Template",
@@ -54,9 +78,9 @@ const projects = [
     tags: ["RAID", "Decisioning", "Operating model", "Risk", "Visibility"],
     links: {
       repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://github.com/MadhurKh/tpm-templates",
+      demo: "https://github.com/MadhurKh/tpm-templates/blob/main/templates/raid-decisions/04-decision-log.md",
     },
-    demoLabel: "Open templates repo",
+    demoLabel: "Open decision log",
   },
 ];
 
@@ -500,9 +524,9 @@ export default function Home() {
                     </div>
 
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                      {w.links.map((l) => (
+                      {w.links.map((l, i) => (
                         <a
-                          key={l.href}
+                          key={`${l.href}-${l.label}-${i}`}
                           href={l.href}
                           target="_blank"
                           rel="noreferrer"
