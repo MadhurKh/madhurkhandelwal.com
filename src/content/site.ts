@@ -3,20 +3,19 @@
 export const site = {
   person: {
     name: "Madhur Khandelwal",
-    title: "Senior Technical Program Leader",
+    title: "AI Transformation Leader | Enterprise AI Strategy | GenAI & Agentic AI",
     location: "Bengaluru, India",
     image: "/madhur.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/madhur17/",
       github: "https://github.com/MadhurKh",
-      templatesRepo: "https://github.com/MadhurKh/tpm-templates",
-      email: "madhur.khandelwal@gmail.com",
+      email: "gpmadhur@gmail.com",
     },
   },
 
   nav: [
     { label: "Playbook", href: "#playbook" },
-    { label: "Projects", href: "#projects" },
+    { label: "Solutions", href: "#solutions" },
     { label: "Writing", href: "#writing" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
@@ -27,107 +26,96 @@ export const site = {
   },
 
   leftRail: {
-    pills: ["Roadmap + Release", "RAID + Dependencies", "Scale + Reliability"],
+    pills: ["Enterprise AI Strategy", "GenAI & Agentic AI", "Governance + Value Realization"],
     stats: [
-      { label: "Delivery impact", value: "$150M+ programs governed" },
-      { label: "Operating model", value: "RAID + stage gates + release cadence" },
-      { label: "Execution scale", value: "50+ cross-functional delivery org" },
+      { label: "Programs delivered", value: "10+ AI & transformation programs" },
+      { label: "Value delivered", value: "$150M+ identified • $50M+ active" },
+      { label: "Teams led", value: "50+ cross-functional resources" },
     ],
-    positioningLabel: "Positioning statement",
+    positioningLabel: "What I do",
     positioningText:
-      "I drive complex platform programs end-to-end — aligning stakeholders, managing dependencies and risk, and delivering measurable outcomes through disciplined execution.",
+      "I help enterprises scale AI from pilots to production—building use-case portfolios, governance, and operating models that drive adoption and measurable business outcomes.",
   },
 
   hero: {
-    pills: [
-      "Technical Program Management",
-      "Platform Delivery",
-      "Roadmap + Release",
-      "Operational Excellence",
-    ],
+    pills: ["AI Transformation", "GenAI", "Agentic AI", "Automation", "Governance", "Value Realization"],
     headline:
-      "Delivering complex platform programs end-to-end—roadmap, dependencies, release readiness, and measurable outcomes.",
+      "Scaling AI from pilot to enterprise adoption—strategy, governance, and measurable value.",
     body:
-      "I lead cross-functional technical programs across the full product lifecycle—partnering with Engineering, Product, UX, Legal, Finance, Support, and GTM teams to plan dependencies, manage RAID, drive release readiness, and deliver outcomes tied to reliability, performance, customer experience, and operational efficiency. Tooling + cadence: Jira, Confluence, Smartsheet; weekly exec updates; RAID + decision logs + readiness checklists.",
-    primaryCta: { label: "Explore programs", href: "#projects" },
+      "I lead enterprise AI transformation programs that convert ambiguous AI ambition into structured execution. My focus areas include GenAI and agentic AI, intelligent automation, use-case portfolio design, responsible AI governance (HITL, RBAC, auditability), and change management—so solutions ship, get adopted, and sustain value.",
+    primaryCta: { label: "Explore solutions", href: "#solutions" },
     secondaryCta: {
-      label: "Watch featured demo",
+      label: "Watch GenAI demo",
       href: "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
     },
     highlights: [
-      { label: "Execution", value: "Roadmap → delivery → launch" },
-      { label: "Governance", value: "RAID + readiness discipline" },
-      { label: "Outcomes", value: "Business + technical metrics" },
+      { label: "Strategy → Execution", value: "Use-cases • roadmaps • business cases" },
+      { label: "Governed deployment", value: "HITL • RBAC • audit trails" },
+      { label: "Outcomes", value: "Productivity • accuracy • cycle-time • $ value" },
     ],
   },
 
   sections: {
     playbook: {
-      eyebrow: "How I execute",
-      title: "Program Delivery Playbook",
+      eyebrow: "How I scale AI",
+      title: "AI Transformation Playbook",
       subtitle:
-        "The repeatable system I use to make large, cross-functional programs predictable.",
+        "A practical, repeatable approach to move from ideas to production AI with adoption and value realization.",
       items: [
         {
-          icon: "roadmap",
-          title: "Roadmap planning + prioritization",
-          blurb:
-            "Define scope, milestones, and success metrics; drive continuous prioritization as constraints change.",
+          icon: "discover",
+          title: "Discover & diagnose",
+          blurb: "Assess processes, data, risk constraints, and “what good looks like” using structured diagnostics and benchmarking.",
         },
         {
-          icon: "deps",
-          title: "Dependency mapping (end-to-end)",
-          blurb:
-            "Clarify interfaces and sequencing across Eng, Product, UX, Legal, Finance, Support, and GTM.",
+          icon: "design",
+          title: "Design the portfolio",
+          blurb: "Define a prioritized use-case portfolio with ROI logic, feasibility, operating mechanisms, and clear ownership.",
         },
         {
-          icon: "release",
-          title: "Release readiness + launch plan",
-          blurb:
-            "Run readiness reviews, checklists, and cutover plans to ensure smooth launches and customer impact.",
+          icon: "build",
+          title: "Build & integrate",
+          blurb: "Deliver solutions across RPA, process mining, OCR, analytics, GenAI/agentic AI with scalable patterns and integrations.",
         },
         {
-          icon: "raid",
-          title: "RAID + change control",
-          blurb:
-            "Maintain RAID logs, mitigation owners, and decision cadences; manage scope change with clarity.",
+          icon: "govern",
+          title: "Govern responsibly",
+          blurb: "Implement controls: HITL checkpoints, RBAC, auditability, monitoring, and compliance guardrails.",
         },
         {
-          icon: "stakeholders",
-          title: "Stakeholder cadence + executive comms",
-          blurb:
-            "Keep teams aligned through crisp updates, decision memos, and leadership-ready reporting.",
+          icon: "adopt",
+          title: "Drive adoption",
+          blurb: "Enable teams through SOPs, change management, training, and measurable adoption metrics.",
         },
         {
-          icon: "metrics",
-          title: "LOE/resource planning + delivery metrics",
-          blurb:
-            "Partner with engineering on LOE, staffing, and capacity; track delivery and outcome KPIs.",
+          icon: "value",
+          title: "Realize & sustain value",
+          blurb: "Track outcomes (cost, cycle time, accuracy), run continuous improvement, and report value with executive visibility.",
         },
       ],
     },
 
     featured: {
-      eyebrow: "Featured in",
-      title: "Genpact — People of Genpact",
+      eyebrow: "Recognition",
+      title: "Top 3 Global Leader — Genpact Agentic AI Program",
       blurb:
-        "Recognized as a Digital Transformation & Agentic AI leader; Top 3 winner in Genpact’s global Think Agentic contest (9,000+ ideas). Trusted to scale delivery playbooks and governance across programs.",
-      ctaLabel: "Read on LinkedIn",
+        "Recognized among the Top 3 globally for designing enterprise-ready multi-agent solutions with practical business applicability and strong ROI focus.",
+      ctaLabel: "View LinkedIn",
       url: "https://www.linkedin.com/in/madhur17/",
     },
 
-    projects: {
-      eyebrow: "Featured work",
-      title: "Programs",
+    solutions: {
+      eyebrow: "Selected work",
+      title: "AI Solutions & Accelerators",
       subtitle:
-        "Platform and delivery programs—end-to-end execution, dependencies, release readiness, and measurable outcomes.",
+        "A curated set of enterprise AI initiatives—productized tools, governed GenAI patterns, and scalable operating mechanisms.",
     },
 
     writing: {
       eyebrow: "Thought leadership",
       title: "Writing",
       subtitle:
-        "Posts on program execution, governance, release readiness, and building enterprise-scale platforms.",
+        "Perspectives on scaling AI, governance, and building production-ready GenAI/agentic solutions.",
       buttonLabel: "View on LinkedIn",
       buttonHref: "https://www.linkedin.com/in/madhur17/",
       posts: [
@@ -135,8 +123,8 @@ export const site = {
           title:
             "What Actually Makes Complex Product Launches Succeed: A Technical Program Management Perspective",
           blurb:
-            "Complex launches rarely fail due to effort. They fail when dependencies surface too late, decision owners are unclear, and release readiness is managed late. This article shares a practical TPM view on roadmap sequencing, dependency control, launch gates, executive visibility, and post-launch outcomes.",
-          tags: ["Launch", "Dependencies", "Release readiness", "TPM"],
+            "A practical execution lens on dependencies, decision ownership, launch gates, executive visibility, and post-launch outcomes—useful patterns for scaling AI delivery too.",
+          tags: ["Execution", "Governance", "Operating model"],
           links: [
             {
               label: "Read on LinkedIn",
@@ -145,41 +133,11 @@ export const site = {
           ],
         },
         {
-          title: "Running platform releases: readiness, RAID, and predictable delivery",
+          title: "Scaling AI from pilots to production",
           blurb:
-            "A practical playbook for release planning, risk management, and keeping cross-functional teams aligned.",
-          tags: ["Release", "RAID", "Operating model"],
+            "How to move beyond isolated demos: portfolio design, governance, adoption, and value realization.",
+          tags: ["AI transformation", "Adoption", "Value"],
           links: [{ label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" }],
-        },
-        {
-          title: "Governance that improves predictability (not bureaucracy)",
-          blurb:
-            "How to use stage gates, interface contracts, and lightweight controls to accelerate delivery outcomes.",
-          tags: ["Governance", "Delivery", "Interfaces"],
-          links: [{ label: "View on LinkedIn", href: "https://www.linkedin.com/in/madhur17/" }],
-        },
-      ],
-      archiveTitle: "Earlier writing",
-      archive: [
-        {
-          title:
-            "Driving Innovation with Intelligent Automation: Unleashing the Power of AI and RPA",
-          blurb:
-            "A structured view of intelligent automation and where AI adds leverage in enterprise ops.",
-          href: "https://www.linkedin.com/in/madhur17/",
-        },
-        {
-          title: "Embracing the Future: The Power of Hyperautomation",
-          blurb:
-            "Hyperautomation overview: combining RPA, process intelligence, and AI to scale outcomes.",
-          href: "https://www.linkedin.com/in/madhur17/",
-        },
-        {
-          title:
-            "AI and ML for Digital Transformation: Unlocking Business Opportunities and Efficiency Gains",
-          blurb:
-            "How AI/ML drives measurable efficiency gains in enterprise transformation programs.",
-          href: "https://www.linkedin.com/in/madhur17/",
         },
       ],
     },
@@ -187,17 +145,16 @@ export const site = {
     about: {
       eyebrow: "Background",
       title: "About",
-      subtitle: "How I work across product, engineering, and program delivery.",
+      subtitle: "Enterprise AI transformation, delivery leadership, and governance.",
       body:
-        "I lead cross-functional teams spanning product, engineering, and transformation delivery. My focus is building scalable solutions with measurable outcomes—through crisp roadmaps, disciplined execution, and strong operating mechanisms (dependencies, RAID, and release readiness).",
-      pills: ["Operating model", "Adoption + controls", "Value realization"],
+        "AI transformation leader with 13+ years of experience driving enterprise adoption of AI, GenAI, and intelligent automation across global organizations. I lead cross-functional teams across engineering, architecture, analytics, PMO, and business functions to translate strategy into AI roadmaps, governed deployment, adoption, and measurable business outcomes.",
+      pills: ["Enterprise AI", "GenAI & Agentic AI", "Automation", "Governance", "Value realization"],
     },
 
     contact: {
-      eyebrow: "Let’s talk",
+      eyebrow: "Let’s connect",
       title: "Contact",
-      subtitle:
-        "For roles, collaborations, or a walkthrough of programs and delivery approach.",
+      subtitle: "For AI transformation leadership roles, collaborations, or solution walkthroughs.",
       emailButtonLabel: "Email me",
       linkedinButtonLabel: "Message on LinkedIn",
     },

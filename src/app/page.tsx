@@ -13,74 +13,67 @@ import {
   ShieldCheck,
   Layers,
   Workflow,
-  Map,
-  GitBranch,
-  AlertTriangle,
-  ClipboardCheck,
+  BrainCircuit,
+  Bot,
+  ScanSearch,
+  Factory,
+  ClipboardList,
+  BarChart3,
   Users,
-  Gauge,
+  Gauge, // ✅ add this
 } from "lucide-react";
 
-const projects = [
+// AI Transformation portfolio items (sanitized, outcomes-first)
+const solutions = [
   {
-    title: "Contract Risk Analyzer — TPM Program Case Study",
-    highlight: "Roadmap + dependency control + release readiness + measurable outcomes",
+    title: "TMAT — Transformation Maturity Assessment Tool (SaaS)",
+    highlight: "Enterprise benchmarking + maturity indices + actionable roadmap",
     blurb:
-      "A TPM-style case study of delivering an enterprise-grade solution end-to-end. Scope: cross-functional build across Product/Eng/DS. Mechanisms: milestone plan, dependency sequencing, RAID + decision ownership, launch gates, and post-launch outcomes. Outputs: explainable scoring, audit trail, and exportable artifacts.",
-    tags: ["Roadmap", "Dependencies", "Release readiness", "Governance", "Interfaces", "Auditability"],
+      "Productized assessment platform used to diagnose maturity, benchmark performance, and translate findings into an execution-ready roadmap. Designed for scale across towers and accounts with standardized metrics, governance, and stakeholder-ready outputs.",
+    tags: ["Enterprise AI", "Benchmarking", "Governance", "Roadmapping", "SaaS"],
     links: {
+      artifact: "https://www.linkedin.com/in/madhur17/",
+      repo: "https://github.com/MadhurKh",
+    },
+    artifactLabel: "See overview",
+  },
+  {
+    title: "Agentic AI — Collaborative Multi‑Agent Solutions",
+    highlight: "Practical multi-agent design with controls, auditability, and HITL",
+    blurb:
+      "Designed enterprise-ready agentic solutions focused on measurable ROI, safe deployment, and role-based controls. Emphasis on human-in-the-loop checkpoints, audit trails, and operating mechanisms to move from pilot to production adoption.",
+    tags: ["Agentic AI", "HITL", "Responsible AI", "Controls", "Automation"],
+    links: {
+      artifact:
+        "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+      repo: "https://github.com/MadhurKh",
+    },
+    artifactLabel: "Read my approach",
+  },
+  {
+    title: "GenAI Contract Risk Analyzer — Portfolio Demo",
+    highlight: "Explainable risk scoring + evidence mapping + audit log + export",
+    blurb:
+      "Enterprise-style GenAI demo showcasing explainability, evidence mapping, and auditability. Built to mirror production constraints (governance, schemas, testing) and illustrate how GenAI can safely augment decision workflows.",
+    tags: ["GenAI", "Explainability", "Auditability", "Schemas", "Testing"],
+    links: {
+      artifact:
+        "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
       repo: "https://github.com/MadhurKh/GenAI-Contract-Risk-Analyzer",
-      demo: "https://drive.google.com/file/d/12sLuSNMl59imbLOYdIYgVAPFbO6yn9TY/view?usp=drive_link",
     },
-    demoLabel: "Watch demo",
+    artifactLabel: "Watch demo",
   },
   {
-    title: "API Platform Rollout — TPM Program Case Study",
-    highlight: "Versioning + integration readiness + phased rollout + adoption metrics",
+    title: "AI Transformation Governance — Operating Model",
+    highlight: "Use‑case portfolio + value tracking + adoption + controls",
     blurb:
-      "A platform launch pattern for API/contract changes at scale. Scope: API versioning, partner/team integrations, backward compatibility, and migration sequencing. Mechanisms: dependency map, interface handshakes, rollout strategy (feature flags/phases), release readiness gates, and adoption tracking with clear owner/decision cadence.",
-    tags: ["API", "Integrations", "Rollout", "Dependencies", "Release readiness", "Adoption"],
+      "A repeatable governance system to move beyond isolated pilots: intake → prioritization → execution → adoption → value realization. Includes guardrails for risk, compliance, and change management, with executive visibility.",
+    tags: ["Portfolio", "Value realization", "Adoption", "Controls", "Change"],
     links: {
-      repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
+      artifact: "https://www.linkedin.com/in/madhur17/",
+      repo: "https://github.com/MadhurKh",
     },
-    demoLabel: "Read approach",
-  },
-  {
-    title: "Reliability & Scale Program — TPM Case Study",
-    highlight: "SLOs + observability + release quality gates + incident reduction",
-    blurb:
-      "A reliability program pattern focused on making delivery safer and outcomes measurable. Scope: reliability goals (SLOs), monitoring/alerting, incident response improvements, and release quality gates. Mechanisms: weekly exec updates, RAID discipline, decision logging, and post-launch reviews tied to customer impact and operational metrics.",
-    tags: ["Reliability", "SLOs", "Observability", "Release quality", "Incidents", "Scale"],
-    links: {
-      repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://www.linkedin.com/pulse/what-actually-makes-complex-product-launches-succeed-khandelwal-lhf2c",
-    },
-    demoLabel: "Read approach",
-  },
-  {
-    title: "Release Readiness Checklist — Template",
-    highlight: "Launch gates + readiness reviews + cutover planning",
-    blurb:
-      "A practical template for release readiness: scope lock, dependency confirmations, quality gates, cutover/runbook checks, stakeholder comms, and launch approval criteria. Built to reduce last-minute surprises and improve predictability.",
-    tags: ["Release readiness", "Launch gates", "Cutover", "Quality", "Comms"],
-    links: {
-      repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://github.com/MadhurKh/tpm-templates/blob/main/templates/launch-release-readiness/01-launch-readiness-checklist.md",
-    },
-    demoLabel: "Open checklist",
-  },
-  {
-    title: "RAID Log + Decision Tracker — Template",
-    highlight: "Risk/assumption tracking + decision ownership + executive visibility",
-    blurb:
-      "A lightweight operating mechanism to run complex programs: RAID log with owners and mitigations, decision tracker with DRIs, and cadence-friendly reporting for leadership visibility and fast unblock.",
-    tags: ["RAID", "Decisioning", "Operating model", "Risk", "Visibility"],
-    links: {
-      repo: "https://github.com/MadhurKh/tpm-templates",
-      demo: "https://github.com/MadhurKh/tpm-templates/blob/main/templates/raid-decisions/04-decision-log.md",
-    },
-    demoLabel: "Open decision log",
+    artifactLabel: "See overview",
   },
 ];
 
@@ -96,10 +89,7 @@ function Card({
   className = "",
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
-  className?: string;
-  children: React.ReactNode;
-}) {
+}: React.HTMLAttributes<HTMLDivElement> & { className?: string; children: React.ReactNode }) {
   return (
     <div
       className={`rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm backdrop-blur ${className}`}
@@ -181,7 +171,7 @@ export default function Home() {
             <div className="leading-tight">
               <div className="text-sm font-semibold text-slate-900">{site.person.name}</div>
               <div className="text-xs text-slate-600">
-                Senior Technical Program Management • Platform Delivery • Roadmap & Release
+                AI Transformation Lead • GenAI & Agentic AI • Governance & Value Realization
               </div>
             </div>
           </div>
@@ -195,7 +185,7 @@ export default function Home() {
           </nav>
 
           <a
-            href="#projects"
+            href="#solutions"
             className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 md:hidden"
           >
             View <ArrowRight className="h-4 w-4" />
@@ -205,7 +195,7 @@ export default function Home() {
 
       {/* Layout */}
       <div className="mx-auto grid max-w-6xl gap-6 px-5 py-8 lg:grid-cols-12">
-        {/* Left premium rail (desktop) */}
+        {/* Left rail (desktop) */}
         <aside className="hidden lg:col-span-4 lg:block">
           <div className="sticky top-24 space-y-4">
             <Card className="p-6">
@@ -231,7 +221,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Row 2: pills full width BELOW */}
+              {/* Row 2: pills full width */}
               <div className="mt-3 flex flex-wrap gap-2">
                 {site.leftRail.pills.map((p) => (
                   <Pill key={p}>{p}</Pill>
@@ -245,7 +235,7 @@ export default function Home() {
                   value={site.leftRail.stats[0].value}
                 />
                 <IconStat
-                  icon={<Workflow className="h-4 w-4" />}
+                  icon={<Layers className="h-4 w-4" />}
                   label={site.leftRail.stats[1].label}
                   value={site.leftRail.stats[1].value}
                 />
@@ -273,15 +263,6 @@ export default function Home() {
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
                 >
                   <Github className="h-4 w-4" /> GitHub
-                </a>
-
-                <a
-                  href={site.person.links.templatesRepo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-white"
-                >
-                  <FileText className="h-4 w-4" /> TPM Templates
                 </a>
 
                 <a
@@ -320,6 +301,19 @@ export default function Home() {
               {site.hero.body}
             </p>
 
+            {/* Tooling strip */}
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-600">
+              <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1">
+                Tooling: Jira • Confluence • Smartsheet
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1">
+                Platforms: RPA • Process Mining • OCR • GenAI • Agentic AI
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1">
+                Delivery: Governance • Adoption • Value realization
+              </span>
+            </div>
+
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={site.hero.primaryCta.href}
@@ -340,24 +334,24 @@ export default function Home() {
 
             <div className="mt-7 grid gap-3 md:grid-cols-3">
               <IconStat
-                icon={<ShieldCheck className="h-4 w-4" />}
+                icon={<BrainCircuit className="h-4 w-4" />}
                 label={site.hero.highlights[0].label}
                 value={site.hero.highlights[0].value}
               />
               <IconStat
-                icon={<Layers className="h-4 w-4" />}
+                icon={<Workflow className="h-4 w-4" />}
                 label={site.hero.highlights[1].label}
                 value={site.hero.highlights[1].value}
               />
               <IconStat
-                icon={<Workflow className="h-4 w-4" />}
+                icon={<BarChart3 className="h-4 w-4" />}
                 label={site.hero.highlights[2].label}
                 value={site.hero.highlights[2].value}
               />
             </div>
           </Card>
 
-          {/* Program Delivery Playbook */}
+          {/* AI Transformation Playbook */}
           <div id="playbook" className="mt-6 scroll-mt-24">
             <Card className="p-6 md:p-8">
               <SectionTitle
@@ -373,15 +367,15 @@ export default function Home() {
                     className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
                   >
                     <div className="mt-0.5 rounded-lg border border-slate-200 bg-white p-2 text-slate-900">
-                      {it.icon === "roadmap" ? (
-                        <Map className="h-4 w-4" />
-                      ) : it.icon === "deps" ? (
-                        <GitBranch className="h-4 w-4" />
-                      ) : it.icon === "raid" ? (
-                        <AlertTriangle className="h-4 w-4" />
-                      ) : it.icon === "release" ? (
-                        <ClipboardCheck className="h-4 w-4" />
-                      ) : it.icon === "stakeholders" ? (
+                      {it.icon === "discover" ? (
+                        <ScanSearch className="h-4 w-4" />
+                      ) : it.icon === "design" ? (
+                        <ClipboardList className="h-4 w-4" />
+                      ) : it.icon === "build" ? (
+                        <Factory className="h-4 w-4" />
+                      ) : it.icon === "govern" ? (
+                        <ShieldCheck className="h-4 w-4" />
+                      ) : it.icon === "adopt" ? (
                         <Users className="h-4 w-4" />
                       ) : (
                         <Gauge className="h-4 w-4" />
@@ -397,7 +391,7 @@ export default function Home() {
             </Card>
           </div>
 
-          {/* Featured (Genpact) */}
+          {/* Featured */}
           <div className="mt-6">
             <Card className="p-6 md:p-8">
               <SectionTitle
@@ -418,27 +412,17 @@ export default function Home() {
             </Card>
           </div>
 
-          {/* Programs */}
-          <div id="projects" className="mt-6 scroll-mt-24">
+          {/* Solutions */}
+          <div id="solutions" className="mt-6 scroll-mt-24">
             <Card className="p-6 md:p-8">
               <SectionTitle
-                eyebrow={site.sections.projects.eyebrow}
-                title={site.sections.projects.title}
-                subtitle={site.sections.projects.subtitle}
-                right={
-                  <a
-                    href={site.person.links.templatesRepo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-white"
-                  >
-                    <FileText className="h-4 w-4" /> Open TPM Templates
-                  </a>
-                }
+                eyebrow={site.sections.solutions.eyebrow}
+                title={site.sections.solutions.title}
+                subtitle={site.sections.solutions.subtitle}
               />
 
               <div className="mt-6 grid gap-4">
-                {projects.map((p) => (
+                {solutions.map((p) => (
                   <div
                     key={p.title}
                     className="rounded-2xl border border-slate-200/70 bg-white/70 p-5 shadow-sm"
@@ -460,12 +444,12 @@ export default function Home() {
 
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                       <a
-                        href={p.links.demo}
+                        href={p.links.artifact}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
                       >
-                        <PlayCircle className="h-4 w-4" /> {p.demoLabel}
+                        <PlayCircle className="h-4 w-4" /> {p.artifactLabel}
                       </a>
 
                       <a
@@ -538,27 +522,6 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Archive */}
-              <div className="mt-8">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  {site.sections.writing.archiveTitle}
-                </div>
-                <div className="mt-3 grid gap-3">
-                  {site.sections.writing.archive.map((a, i) => (
-                    <a
-                      key={`${a.title}-${a.href}-${i}`}
-                      href={a.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-2xl border border-slate-200/70 bg-white/70 p-4 text-sm text-slate-700 shadow-sm hover:bg-white"
-                    >
-                      <div className="font-semibold text-slate-900">{a.title}</div>
-                      <div className="mt-1 text-sm text-slate-600">{a.blurb}</div>
-                    </a>
-                  ))}
-                </div>
               </div>
             </Card>
           </div>
